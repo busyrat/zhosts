@@ -1,0 +1,19 @@
+{
+  "name": "zhosts",
+  "version": "1.0.0",
+  "main": "app/main/index.js",
+  "scripts": {
+    "start": "concurrently \"yarn start:renderer\" \"wait-on http://localhost:3000 && yarn start:main\" ",
+    "start:main": "electron .",
+    "start:renderer": "cd app/renderer/src/main && yarn start"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "electron": "^8.2.3",
+    "electron-is-dev": "^1.2.0"
+  },
+  "devDependencies": {
+    "concurrently": "^5.1.0",
+    "wait-on": "^4.0.2"
+  }
+}
