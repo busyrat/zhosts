@@ -10,10 +10,13 @@
   "license": "MIT",
   "dependencies": {
     "electron": "^8.2.3",
-    "electron-is-dev": "^1.2.0"
+    "electron-is-dev": "^1.2.0",
+    "robotjs": "^0.6.0",
+    "vkey": "^1.0.1"
   },
   "devDependencies": {
     "concurrently": "^5.1.0",
+    "electron-rebuild": "^1.10.1",
     "wait-on": "^4.0.2"
   }
 }
