@@ -1,9 +1,9 @@
 const { app } = require('electron')
 const handleIPC = require('./ipc')
-const { create: createControlWindow } = require('./windows/control')
+const { create: createMainWindow } = require('./windows/control')
 
 app.on('ready', () => {
-  createControlWindow()
+  createMainWindow()
   handleIPC()
   require('./robot.js')()
 })

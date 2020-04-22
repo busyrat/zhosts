@@ -5,18 +5,27 @@
   "scripts": {
     "start": "concurrently \"yarn start:renderer\" \"wait-on http://localhost:3000 && yarn start:main\" ",
     "start:main": "electron .",
-    "start:renderer": "cd app/renderer/src/main && yarn start"
+    "start:renderer": "cd app/renderer/src/main && yarn start",
+    "package-mac": "electron-builder build --mac",
+    "postinstall": "electron-builder install-app-deps"
   },
   "license": "MIT",
   "dependencies": {
-    "electron": "^8.2.3",
     "electron-is-dev": "^1.2.0",
     "robotjs": "^0.6.0",
     "vkey": "^1.0.1"
   },
   "devDependencies": {
     "concurrently": "^5.1.0",
+    "electron": "^8.2.3",
+    "electron-builder": "^22.4.1",
     "electron-rebuild": "^1.10.1",
     "wait-on": "^4.0.2"
+  },
+  "description": "zhosts",
+  "author": {
+    "name": "busyrat",
+    "email": "busyrat@gmail.com",
+    "url": "https://busyrat.com"
   }
 }
