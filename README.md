@@ -116,3 +116,51 @@ websocket.org/echo.html 测试
 SDP
 
 Session Description Protocol 会话描述协议
+
+---
+
+NAT
+
+Network Address Translation 网络地址转换
+
+NAT 穿透 打洞
+
+ICE
+
+Interactive Connectivity Establishment 交互式连接创建
+
+优先 STUN
+
+NAT 会话穿越应用程序
+
+备选 TURN
+
+中继 NAT 实现的穿透
+
+---
+
+STUN 过程
+
+控制端 TO STUN：
+
+- 讯问地址 onIceCandidate (返回 IceEvent, 包含 IP+端口)
+
+控制端 TO 傀儡端：
+
+- 将 IceEvent 发送
+
+傀儡端：
+
+- 添加 ICE 代理， addIceCandidate
+
+傀儡端 TO STUN：
+
+- 讯问地址 onIceCandidate (返回 IceEvent, 包含 IP+端口)
+
+傀儡端 TO 控制端 ：
+
+- 将 IceEvent 发送
+
+控制端：
+
+- 添加 ICE 代理， addIceCandidate

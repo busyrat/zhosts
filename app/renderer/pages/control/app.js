@@ -11,24 +11,24 @@ function play(stream) {
   }
 }
 
-// window.onkeydown = function (e) {
-//   let data = {
-//     keyCode: e.keyCode,
-//     shift: e.shiftKey,
-//     meta: e.metaKey,
-//     control: e.ctrlKey,
-//     alt: e.altKey,
-//   }
-//   peer.emit('robot', 'key', data)
-// }
-// window.onmouseup = function (e) {
-//   let data = {}
-//   data.clientX = e.clientX
-//   data.clientY = e.clientY
-//   data.video = {
-//     width: video.getBoundingClientRect().width,
-//     height: video.getBoundingClientRect().height,
-//   }
-//   console.log(data)
-//   peer.emit('robot', 'mouse', data)
-// }
+window.onkeydown = function (e) {
+  let data = {
+    keyCode: e.keyCode,
+    shift: e.shiftKey,
+    meta: e.metaKey,
+    control: e.ctrlKey,
+    alt: e.altKey,
+  }
+  peer.emit('robot', 'key', data)
+}
+window.onmouseup = function (e) {
+  let data = {}
+  data.clientX = e.clientX
+  data.clientY = e.clientY
+  data.video = {
+    width: video.getBoundingClientRect().width,
+    height: video.getBoundingClientRect().height,
+  }
+  console.log(data)
+  peer.emit('robot', 'mouse', data)
+}

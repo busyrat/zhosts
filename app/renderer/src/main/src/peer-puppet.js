@@ -16,6 +16,24 @@ async function getScreenStream() {
   })
 }
 
+pc.onicecandidate = function (e) {
+  console.log('candidate, ' + JSON.stringify(e.candidate))
+}
+
+let candidates = []
+async function addIceCandidate(candidate) {
+  if (candidate) {
+    candidates.push(candidate)
+  }
+  if (pc.remoteDescription && pc.remoteDescription.type) {
+    for (let i = 0; i < candidates.length; i++) {
+      await pc.addIceCandidate(new RTCIceCandidate(candidates[i]))
+    }
+  }
+}
+
+window.addIceCandidate = addIceCandidate
+
 async function createAnswer(offer) {
   let screenStream = await getScreenStream()
   pc.addStream(screenStream)
