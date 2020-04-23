@@ -80,3 +80,39 @@ vscode 调试
 websocket.org/echo.html 测试
 
 ---
+
+最简单的 P2P
+
+控制端：
+
+- 创建 RTCPeerConnection
+
+- 发起连接 createOffer(得到 offer SDP)
+
+- setLocalDescription(设置 offer SDP)
+
+- 将控制端的 offer SDP 发送给傀儡端
+
+傀儡端：
+
+- 创建 RTCPeerConnection
+
+- 添加桌面流 addstream
+
+- setRemoteDescription(设置控制端 offer SDP)
+
+- 响应连接 createAnswer(得到 answer SDP)
+
+- setLocalDescription(设置 answaer SDP)
+
+- 将傀儡端的 offer SDP 发送给控制端
+
+控制端：
+
+- setRemoteDescription(设置控制端 answer SDP)
+
+---
+
+SDP
+
+Session Description Protocol 会话描述协议
