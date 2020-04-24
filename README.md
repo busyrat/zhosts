@@ -77,10 +77,6 @@ vscode 调试
 
 ---
 
-websocket.org/echo.html 测试
-
----
-
 最简单的 P2P
 
 控制端：
@@ -164,3 +160,25 @@ STUN 过程
 控制端：
 
 - 添加 ICE 代理， addIceCandidate
+
+---
+
+WebSocket
+
+基于 TCP 长连接通讯
+
+全双工通讯，性能好，安全，扩展性
+
+适用于：网游、支付、IM 等
+
+第三方库：SocketIO、ws
+
+websocket.org/echo.html 测试
+
+---
+
+sse
+
+高级浏览器才有
+
+服务端
