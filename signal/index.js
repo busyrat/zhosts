@@ -8,6 +8,9 @@ wss.on('connection', (ws, request) => {
 
   // 缓存映射
   code2ws.set(code, ws)
+
+  ws.sendError = (msg) => ws.sendData('error', { msg })
+
   ws.sendData = (event, data) => {
     ws.send(JSON.stringify({ event, data }))
   }
@@ -29,6 +32,7 @@ wss.on('connection', (ws, request) => {
       if (code2ws.has(remote)) {
         ws.sendData('controlled', { remote })
         ws.sendRemote = code2ws.get(remote).sendData
+        code2ws.get(remote).sendRemote = ws.sendData
         ws.sendRemote('be-controlled', { remote: code })
       }
     } else if (event === 'forward') {

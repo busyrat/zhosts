@@ -12,8 +12,15 @@ const { ipcRenderer } = require('electron')
 const pc = new window.RTCPeerConnection({})
 
 pc.onicecandidate = function (e) {
-  console.log('candidate, ' + JSON.stringify(e.candidate))
+  if (e.candidate) {
+    ipcRenderer.send('forward', 'control-candidate', JSON.stringify(e.candidate))
+  }
 }
+
+ipcRenderer.on('candidate', (e, candidate) => {
+  console.log('ipc candidate, ', candidate)
+  addIceCandidate(candidate)
+})
 
 let candidates = []
 async function addIceCandidate(candidate) {
@@ -39,13 +46,19 @@ async function createOffer() {
   return pc.localDescription
 }
 
-createOffer()
+createOffer().then((offer) => {
+  ipcRenderer.send('forward', 'offer', { type: offer.type, sdp: offer.sdp })
+})
 
 async function setRemote(answer) {
   await pc.setRemoteDescription(answer)
 }
 
 window.setRemote = setRemote
+ipcRenderer.on('answer', (e, answer) => {
+  console.log('answer!!!!!!!!!!!!!!!!!!!!!!!: ', answer)
+  setRemote(answer)
+})
 
 pc.onaddstream = function (e) {
   console.log('add-stream', e)

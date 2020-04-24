@@ -1,5 +1,5 @@
 const pc = new window.RTCPeerConnection({})
-const { desktopCapturer } = require('electron')
+const { desktopCapturer, ipcRenderer } = require('electron')
 
 async function getScreenStream() {
   const sources = await desktopCapturer.getSources({ types: ['screen'] })
@@ -17,7 +17,9 @@ async function getScreenStream() {
 }
 
 pc.onicecandidate = function (e) {
-  console.log('candidate, ' + JSON.stringify(e.candidate))
+  if (e.candidate) {
+    ipcRenderer.send('forward', 'puppet-candidate', JSON.stringify(e.candidate))
+  }
 }
 
 let candidates = []
@@ -34,13 +36,18 @@ async function addIceCandidate(candidate) {
 
 window.addIceCandidate = addIceCandidate
 
+ipcRenderer.on('offer', async (e, offer) => {
+  let answer = await createAnswer(offer)
+  ipcRenderer.send('forward', 'answer', { type: answer.type, sdp: answer.sdp })
+})
+
 async function createAnswer(offer) {
   let screenStream = await getScreenStream()
   pc.addStream(screenStream)
 
   await pc.setRemoteDescription(offer)
   await pc.setLocalDescription(await pc.createAnswer())
-  console.log('pc answer, ' + JSON.stringify(pc.localDescription))
+  // console.log('pc answer, ' + JSON.stringify(pc.localDescription))
 
   return pc.localDescription
 }
