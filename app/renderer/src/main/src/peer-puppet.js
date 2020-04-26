@@ -1,4 +1,4 @@
-const { desktopCapturer, ipcRenderer } = require('electron')
+const { desktopCapturer, ipcRenderer } = window.require('electron')
 
 async function getScreenStream() {
   const sources = await desktopCapturer.getSources({ types: ['screen'] })

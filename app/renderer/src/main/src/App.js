@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import './App.css'
-import { ipcRenderer } from 'electron'
-// const { ipcRenderer } = window.require('electron')
+// import { ipcRenderer } from 'electron'
+const { ipcRenderer } = window.require('electron')
 
 function App() {
   const [remoteCode, setRemoteCode] = useState('')
