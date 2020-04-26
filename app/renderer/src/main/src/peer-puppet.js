@@ -1,5 +1,13 @@
 const { desktopCapturer, ipcRenderer } = window.require('electron')
 
+const pc = new window.RTCPeerConnection({
+  iceServers: [
+    {
+      urls: `stun:stun.freeswitch.org`,
+    },
+  ],
+})
+
 async function getScreenStream() {
   const sources = await desktopCapturer.getSources({ types: ['screen'] })
   return navigator.mediaDevices.getUserMedia({
@@ -15,7 +23,6 @@ async function getScreenStream() {
   })
 }
 
-const pc = new window.RTCPeerConnection({})
 pc.ondatachannel = (e) => {
   console.log('datachannel', e)
   e.channel.onmessage = (e) => {

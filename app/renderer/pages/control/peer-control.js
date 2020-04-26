@@ -3,7 +3,14 @@ const peer = new EventEmitter()
 
 const { ipcRenderer } = require('electron')
 
-const pc = new window.RTCPeerConnection({})
+const pc = new window.RTCPeerConnection({
+  iceServers: [
+    {
+      urls: `stun:stun.freeswitch.org`,
+    },
+  ],
+})
+
 const dc = pc.createDataChannel('robotChannel', { reliable: false })
 dc.onopen = function () {
   peer.on('robot', (type, data) => {
