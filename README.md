@@ -182,3 +182,31 @@ sse
 高级浏览器才有
 
 服务端
+
+---
+
+RTCDataChannel
+
+用处：用来传输数据用的
+
+基于 P2P 传输，无服务端依赖；
+
+基于 SCTP（传输层，有着 TCP、UDP 的优点：可靠、有序）
+
+控制端：
+
+pc.createDataChannel（在连接中新增数据通道）
+
+傀儡端：
+
+pc.ondatachannel（发现新数据通道传输）
+
+e.channel.onmessage
+
+控制端：
+
+open 事件触发（数据通道成功）
+
+傀儡端：
+
+响应指令

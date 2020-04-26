@@ -6,8 +6,8 @@
     "start": "concurrently \"yarn start:renderer\" \"wait-on http://localhost:3000 && yarn start:main\" ",
     "start:main": "electron .",
     "start:renderer": "cd app/renderer/src/main && yarn start",
-    "package-mac": "electron-builder build --mac",
-    "postinstall": "electron-builder install-app-deps"
+    "postinstall": "electron-builder install-app-deps",
+    "package-mac": "electron-builder build --mac"
   },
   "license": "MIT",
   "dependencies": {

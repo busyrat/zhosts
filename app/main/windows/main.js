@@ -9,13 +9,13 @@ function create() {
     width: 1200,
     height: 600,
     webPreferences: {
-      nodeIntegration: true
-    }
+      nodeIntegration: true,
+    },
   })
   if (isDev) {
     win.loadURL('http://localhost:3000')
   } else {
-    win.loadFile(path.resolve(__dirname, '../../renderer/pages/main/index.html'))
+    win.loadFile(path.resolve(__dirname, '../../renderer/src/main/build/index.html'))
   }
 }
 

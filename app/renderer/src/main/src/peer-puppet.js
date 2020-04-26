@@ -1,4 +1,3 @@
-const pc = new window.RTCPeerConnection({})
 const { desktopCapturer, ipcRenderer } = require('electron')
 
 async function getScreenStream() {
@@ -14,6 +13,21 @@ async function getScreenStream() {
       },
     },
   })
+}
+
+const pc = new window.RTCPeerConnection({})
+pc.ondatachannel = (e) => {
+  console.log('datachannel', e)
+  e.channel.onmessage = (e) => {
+    let { type, data } = JSON.parse(e.data)
+    if (type === 'mouse') {
+      data.screen = {
+        width: window.screen.width,
+        height: window.screen.height,
+      }
+    }
+    ipcRenderer.send('robot', type, data)
+  }
 }
 
 pc.onicecandidate = function (e) {
