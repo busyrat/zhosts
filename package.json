@@ -1,6 +1,6 @@
 {
   "name": "zhosts",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "main": "app/main/index.js",
   "scripts": {
     "start": "concurrently \"yarn start:renderer\" \"wait-on http://localhost:3000 && yarn start:main\" ",
