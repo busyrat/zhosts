@@ -9,7 +9,7 @@ jobs:
     strategy:
       matrix:
         node-version: [12.x]
-        package_manager: [npm, yarn]
+        package_manager: [yarn]
 
     steps:
       - name: Check out Git repository
