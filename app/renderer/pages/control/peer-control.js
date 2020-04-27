@@ -8,6 +8,11 @@ const pc = new window.RTCPeerConnection({
     {
       urls: `stun:stun.freeswitch.org`,
     },
+    {
+      urls: 'turn:119.29.178.93',
+      credential: 'busyrat',
+      username: 'busyrat',
+    },
   ],
 })
 
