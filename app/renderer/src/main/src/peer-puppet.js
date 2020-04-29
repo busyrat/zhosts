@@ -6,7 +6,12 @@ const pc = new window.RTCPeerConnection({
       urls: `stun:stun.freeswitch.org`,
     },
     {
-      urls: 'turn:119.29.178.93',
+      urls: 'turn:119.29.178.93:3478?transport=udp',
+      username: 'username',
+      credential: '123456',
+    },
+    {
+      urls: 'turn:119.29.178.93:3478?transport=tcp',
       username: 'username',
       credential: '123456',
     },
