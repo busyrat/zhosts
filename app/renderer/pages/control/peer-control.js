@@ -10,8 +10,8 @@ const pc = new window.RTCPeerConnection({
     },
     {
       urls: 'turn:119.29.178.93',
-      credential: 'username',
-      username: '123456',
+      username: 'username',
+      credential: '123456',
     },
   ],
 })
