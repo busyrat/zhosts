@@ -9,7 +9,8 @@
     "build": "cd app/renderer/src/main && yarn build && rm -rf ../../pages/main && mv build ../../pages/main",
     "postinstall": "electron-builder install-app-deps",
     "package-mac": "yarn build && electron-builder build --mac",
-    "package-win": "electron-builder build --win --ia32"
+    "package-win": "electron-builder build --win --ia32",
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0"
   },
   "license": "MIT",
   "dependencies": {
@@ -20,6 +21,7 @@
   },
   "devDependencies": {
     "concurrently": "^5.1.0",
+    "conventional-changelog-cli": "^2.0.31",
     "electron": "^8.2.3",
     "electron-builder": "^22.4.1",
     "electron-rebuild": "^1.10.1",

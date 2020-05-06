@@ -210,3 +210,103 @@ open 事件触发（数据通道成功）
 傀儡端：
 
 响应指令
+
+## 媒体
+
+轨（Track）
+
+流（MediaStream）
+
+一个流里面可能有多个轨
+
+---
+
+WebRTC 重要类
+
+MediaStream
+
+RTCPeerConnection
+
+RTCDataChannel 非音视频通道
+
+---
+
+PeerConnection 调用过程
+
+---
+
+Web 服务器选型
+
+NodeJS
+
+Nginx
+
+Apache
+
+---
+
+netstat -ntpl 查看所有 TCP 端口
+
+长期挂起：
+
+```shell
+noHub node app.js &
+# 或者
+npm install -g forever
+forever start app.js
+```
+
+---
+
+serve-index 生成一个根目录
+
+---
+
+NAT Network Address Translator
+
+STUN Simple Traversal of UDP Through NAT
+
+TURN Traversal Using Relays around NAT
+P2P 不通的情况下的保险
+
+ICE Interactive Connectivity Establishment
+把 STUN 和 TURN 打包在一起，取最优路径
+
+---
+
+NAT 产生的原因：
+
+由于 IPv4 的地址不够
+
+出于网络安全的原因：外网和内网分隔开
+
+---
+
+NAT 种类
+
+完全锥形 NAT: Full Cone NAT，安全级别很低
+
+地址限制锥形 NAT: Address Restricted Cone NAT，IP 地址限制，只信任发送过消息的源头
+
+端口限制锥形 NAT: Port Restricted Cone NAT，IP 的基础上加上端口信任
+
+对称型: NAT Symmetric NAT，几乎穿越不了
+
+---
+
+NAT 无法穿越
+
+端口受限锥型 & 对称型
+对称型 & 对称型
+
+---
+
+RFC STUN 规范
+
+RFC3489/STUN
+
+Simple Traversal of UDP Through NAT
+
+RFC5389/STUN，在原基础上主要增加了 TCP
+
+Session Traversal Utilities for NAT
