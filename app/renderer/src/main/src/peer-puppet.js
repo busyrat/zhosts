@@ -3,12 +3,12 @@ const { desktopCapturer, ipcRenderer } = window.require('electron')
 const pc = new window.RTCPeerConnection({
   iceServers: [
     {
-      urls: `stun:stun.freeswitch.org`,
+      urls: 'stun:stun.xten.com',
     },
     {
-      urls: 'turn:119.29.178.93:9997',
-      username: 'username',
-      credential: '123456',
+      urls: 'turn:numb.viagenie.ca',
+      credential: '077032',
+      username: '676702008@qq.com',
     },
   ],
 })
